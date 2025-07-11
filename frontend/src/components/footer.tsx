@@ -19,20 +19,26 @@ export default function Footer() {
         {/* Endereço */}
         <div>
           <h4 className="text-base font-semibold mb-2">Endereço</h4>
-          <p className="flex items-start gap-2">
+          <a
+            href="https://www.google.com/maps?q=Rua+01,+Chacara+25/2B,+Spazio+Villa+Régia,+DF,+72005-213"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-start gap-2 hover:underline text-muted-foreground"
+          >
             <MapPin className="w-4 h-4 mt-0.5" />
-            QN 1 Conjunto B, Riacho Fundo I - DF, CEP 71800-100
-          </p>
+            Rua 01, Chacara 25/2B, Spazio Villa Régia, CEP: 72005-213
+          </a>
+
         </div>
 
         {/* Redes Sociais */}
         <div className="flex flex-col items-center text-center">
             <h4 className="text-base font-semibold mb-2">Redes Sociais</h4>
             <div className="flex gap-4 justify-center">
-                <a href="https://wa.me/5561912345678" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/5561999709669" target="_blank" rel="noopener noreferrer">
                     <FaWhatsapp className="w-5 h-5 hover:text-green-600" />
                 </a>
-                <a href="https://www.instagram.com/seucliente" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/vanessavonglehnarquiteta" target="_blank" rel="noopener noreferrer">
                     <Instagram className="w-5 h-5 hover:text-pink-500" />
                 </a>
             </div>
