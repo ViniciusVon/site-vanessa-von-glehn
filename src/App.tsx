@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Projetos from './pages/Projetos';
+import ProjetoDetalhe from './pages/ProjetoDetalhe';
 import Premiacoes from './pages/Premiacoes';
 import Mentoria from './pages/Mentoria';
 import Sobre from './pages/Sobre';
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projetos" element={<Projetos />} />
+          <Route path="/projetos/:slug" element={<ProjetoDetalhe />} />
           <Route path="/premiacoes" element={<Premiacoes />} />
           <Route path="/mentoria" element={<Mentoria />} />
           <Route path="/sobre" element={<Sobre />} />
