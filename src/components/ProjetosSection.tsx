@@ -1,9 +1,20 @@
 import { Link } from "react-router-dom";
 
-const cards = ["Casa Cor", "Decor Year Book", "Clientes"];
-const endpoints = ["casa-cor", "decor-year-book", "clientes"];
+interface Projeto {
+  titulo: string;
+  descricao?: string;
+  imagem?: string;
+}
 
-export default function ProjetosSection() {
+interface ProjetosSectionProps {
+  projetos: Projeto[];
+}
+
+export default function ProjetosSection({ projetos }: ProjetosSectionProps) {
+  if (!projetos || projetos.length === 0) {
+    return <p>Carregando projetos...</p>;
+  }
+
   return (
     <section className="w-full py-16 bg-[var(--background)]">
       <div className="max-w-6xl mx-auto px-6">
@@ -12,11 +23,11 @@ export default function ProjetosSection() {
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          {cards.map((title, index) => {
-            const urlPath = "/projetos/" + endpoints[index];
+          {projetos.map(({ titulo }: Projeto, _index: number) => {
+            const urlPath = "/projetos/" + titulo.toLowerCase().replace(/\s+/g, '-');
 
             return (
-              <Link to={urlPath} key={title} className="block">
+              <Link to={urlPath} key={titulo} className="block">
                 <div className="
                   h-full group p-12
                   bg-white/5 hover:bg-white/10
@@ -27,7 +38,7 @@ export default function ProjetosSection() {
                   cursor-pointer
                 ">
                   <h3 className="text-xl font-semibold text-[var(--foreground)] group-hover:underline">
-                    {title}
+                    {titulo}
                   </h3>
                 </div>
               </Link>

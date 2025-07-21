@@ -6,6 +6,7 @@ import {
 import type { EmblaOptionsType } from 'embla-carousel';
 import Autoplay from "embla-carousel-autoplay";
 import ProjetosSection from '@/components/ProjetosSection';
+import { useEffect, useState } from 'react';
 
 // Importacao das imagens de projetos
 import ambiente1 from '../assets/images/Projects/Ambiente1_angulo2.jpg';
@@ -33,6 +34,17 @@ export default function Projetos() {
     Ambiente1_angulo4
   ]
     .sort(() => Math.random() - 0.5);
+
+  const apiUrl = import.meta.env.VITE_API_URL;
+  const [projetosApi, setProjetosApi] = useState([]);
+
+  useEffect(() => {
+    fetch(`${apiUrl}/api/projetos`)
+      .then(res => res.json())
+      .then(data => setProjetosApi(data))
+      .catch(err => console.error('Erro ao buscar projetos:', err));
+  }, []);
+
   return (
     <>
       {/* Carrossel */}
@@ -66,7 +78,7 @@ export default function Projetos() {
       </Carousel>
 
       {/* Nova seção de Projetos */}
-      <ProjetosSection />
+      <ProjetosSection projetos={projetosApi} />
 
       {/* Seção: Filosofia e Propósito */}
       <section className="w-full py-16 bg-[var(--muted)]">
