@@ -13,12 +13,12 @@ export default function Footer() {
         {/* Contato */}
         <div>
           <h4 className="text-base font-semibold mb-2">Contato</h4>
-          <p className="flex items-center gap-2">
-            <Mail className="w-4 h-4" /> vanessarquiteta@gmail.com
-          </p>
-          <p className="flex items-center gap-2">
-            <FaWhatsapp className="w-4 h-4" /> (61) 99970-9669
-          </p>
+          <a
+            href="mailto:vanessarquiteta@gmail.com"
+            className="flex items-center gap-2 hover:underline text-muted-foreground"
+          >
+            <Mail className="w-4 h-4" /> vanessa.neuroarquiteta@gmail.com
+          </a>
         </div>
 
         {/* Endereço */}
