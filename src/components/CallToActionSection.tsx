@@ -9,12 +9,12 @@ export default function CallToActionSection() {
     <Card className="max-w-6xl mx-auto mt-16 bg-[var(--primary)] text-[var(--primary-foreground)] rounded-2xl overflow-hidden">
       <CardContent className="p-0 flex flex-col md:flex-row">
         {/* Imagem do lado esquerdo */}
-        <div className="md:w-1/2 w-full rounded-2xl overflow-hidden">
+        <div className="md:w-1/2 w-full p-4 md:p-6 rounded-2xl overflow-hidden">
           <AspectRatio ratio={4 / 3}>
             <img
               src={SmillingBlack}
               alt="Imagem profissional"
-              className="object-cover w-full h-full"
+              className="object-cover w-full h-full rounded-2xl"
               style={{ objectPosition: 'top center' }}
             />
           </AspectRatio>

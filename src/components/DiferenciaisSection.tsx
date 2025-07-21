@@ -35,27 +35,29 @@ const diferenciais: Diferencial[] = [
 
 export default function DiferenciaisSection() {
   return (
-    <section className="max-w-6xl mx-auto px-6 py-12 mt-16">
-      <h2 className="text-3xl font-bold text-center text-[var(--foreground)] mb-6">
-        Por que escolher a Vanessa?
-      </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-        {diferenciais.map(({ id, title, description, icon }) => (
-          <Card
-            key={id}
-            className="p-6 shadow-lg hover:shadow-xl transition-shadow rounded-lg"
-          >
-            <div className="flex items-center mb-4">
-              {icon}
-              <h3 className="ml-3 text-xl font-semibold text-[var(--foreground)]">
-                {title}
-              </h3>
-            </div>
-            <CardContent className="text-muted-foreground">
-              {description}
-            </CardContent>
-          </Card>
-        ))}
+    <section className="w-full py-16 bg-[var(--muted)]">
+      <div className="max-w-6xl mx-auto px-6">
+        <h2 className="text-3xl font-bold text-center text-[var(--foreground)] mb-6">
+          Por que escolher a Vanessa?
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+          {diferenciais.map(({ id, title, description, icon }) => (
+            <Card
+              key={id}
+              className="p-6 shadow-lg hover:shadow-xl transition-shadow rounded-lg bg-white dark:bg-muted"
+            >
+              <div className="flex items-center mb-4">
+                {icon}
+                <h3 className="ml-3 text-xl font-semibold text-[var(--foreground)]">
+                  {title}
+                </h3>
+              </div>
+              <CardContent className="text-muted-foreground">
+                {description}
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </div>
     </section>
   );
