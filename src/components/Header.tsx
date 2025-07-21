@@ -3,8 +3,8 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-} from "@/components/ui/navigation-menu";
-import { ModeToggle } from "@/components/ModeToggle";
+} from '@/components/ui/navigation-menu';
+import { ModeToggle } from '@/components/ModeToggle';
 
 export default function Header() {
   return (
@@ -14,29 +14,41 @@ export default function Header() {
         z-50 flex items-center justify-between
         px-8 py-4
         bg-white/10 backdrop-blur-md
-        border border-white rounded-xl
+        border border-[var(--header)] rounded-xl
         shadow-lg
       "
     >
       <NavigationMenu>
         <NavigationMenuList className="flex gap-4">
           <NavigationMenuItem>
-            <NavigationMenuLink href="/" className="px-4 py-2 hover:underline text-white">
+            <NavigationMenuLink
+              href="/"
+              className="px-4 py-2 hover:underline text-[var(--header)]"
+            >
               Home
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuLink href="/projetos" className="px-4 py-2 hover:underline text-white">
+            <NavigationMenuLink
+              href="/projetos"
+              className="px-4 py-2 hover:underline text-[var(--header)]"
+            >
               Projetos
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuLink href="/premiacoes" className="px-4 py-2 hover:underline text-white">
+            <NavigationMenuLink
+              href="/premiacoes"
+              className="px-4 py-2 hover:underline text-[var(--header)]"
+            >
               Premiações
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuLink href="/mentoria" className="px-4 py-2 hover:underline text-white">
+            <NavigationMenuLink
+              href="/mentoria"
+              className="px-4 py-2 hover:underline text-[var(--header)]"
+            >
               Mentoria
             </NavigationMenuLink>
           </NavigationMenuItem>
