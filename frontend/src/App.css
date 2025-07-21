@@ -1,7 +1,6 @@
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
@@ -40,3 +39,26 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Para navegadores baseados em WebKit (Chrome, Opera, etc.) */
+::-webkit-scrollbar {
+  width: 6px; /* Largura vertical */
+  height: 6px; /* Altura horizontal */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Cor de fundo da trilha */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 100, 100, 0.4); /* Cor da "barra" */
+  border-radius: 4px;
+  border: 1px solid transparent; /* Opcional: espaço entre a borda */
+}
+
+/* Para Firefox */
+* {
+  scrollbar-width: thin; /* "auto", "thin", or "none" */
+  scrollbar-color: rgba(100, 100, 100, 0.4) transparent; /* cor da barra e da trilha */
+}
+
