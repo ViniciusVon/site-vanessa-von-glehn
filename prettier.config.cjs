@@ -1,7 +1,9 @@
-// prettier.config.js ou .prettierrc.js
+/** @type {import("prettier").Config} */
 module.exports = {
-  semi: true, // ou false, se não quiser ponto e vírgula
-  singleQuote: true, // ou false, se quiser aspas duplas
-  trailingComma: 'all',
+  semi: true,
+  singleQuote: true,
   tabWidth: 2,
+  trailingComma: 'es5',
+  bracketSpacing: true,
+  arrowParens: 'avoid',
 };
