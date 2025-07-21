@@ -84,7 +84,7 @@ export default function Home() {
           {/* Texto */}
           <div>
             <h2 className="text-3xl font-bold text-[var(--foreground)] mb-4">Filosofia</h2>
-            <p className="text-lg text-gray-700 leading-relaxed mb-4">
+            <p className="text-lg text-gray-600 leading-relaxed mb-4">
               Acredito que a arquitetura deve emocionar, proteger e provocar. A estética por si só não basta — o espaço precisa dialogar com a alma.
               Por isso, utilizo a <span className="font-semibold text-indigo-600">neuroarquitetura</span> como pilar dos meus projetos, explorando como o ambiente impacta diretamente nossas emoções, bem-estar e comportamento.
             </p>
