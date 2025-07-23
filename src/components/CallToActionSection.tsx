@@ -6,7 +6,7 @@ import SmillingBlack from '@/assets/images/Professional/SmillingBlack.jpg';
 
 export default function CallToActionSection() {
   return (
-    <Card className="max-w-6xl mx-auto mt-16 bg-[var(--primary)] text-[var(--primary-foreground)] rounded-2xl overflow-hidden">
+    <Card className="mr-4 ml-4 max-w-6xl w-full mx-auto mt-16 bg-[var(--primary)] text-[var(--primary-foreground)] rounded-2xl overflow-hidden">
       <CardContent className="p-0 flex flex-col md:flex-row">
         {/* Imagem do lado esquerdo */}
         <div className="md:w-1/2 w-full p-4 md:p-6 rounded-2xl overflow-hidden">
