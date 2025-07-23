@@ -44,7 +44,7 @@ export default function Mentoria() {
     },
   ];
 
-  const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0 });
+  const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
     const target = new Date();
@@ -57,6 +57,7 @@ export default function Mentoria() {
         days: Math.floor(diff / (1000 * 60 * 60 * 24)),
         hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
         minutes: Math.floor((diff / (1000 * 60)) % 60),
+        seconds: Math.floor((diff / 1000) % 60)
       });
     }, 1000);
     return () => clearInterval(interval);
@@ -64,9 +65,10 @@ export default function Mentoria() {
 
   async function handleBuy() {
     try {
-      const res = await fetch('/api/mercadopago', { method: 'POST' });
-      const { init_point } = await res.json();
-      window.location.href = init_point;
+      //const res = await fetch('/api/mercadopago', { method: 'POST' });
+      //const { init_point } = await res.json();
+      //window.location.href = init_point;
+      window.location.href = 'https://mpago.la/2iSQEfH';
     } catch (error) {
       console.error(error);
       toast.error('Erro ao iniciar pagamento. Tente novamente.');
@@ -126,6 +128,10 @@ export default function Mentoria() {
               <div>
                 <div className="text-5xl">{countdown.minutes}</div>
                 m
+              </div>
+              <div>
+                <div className="text-5xl">{countdown.seconds}</div>
+                s
               </div>
             </CardContent>
           </Card>

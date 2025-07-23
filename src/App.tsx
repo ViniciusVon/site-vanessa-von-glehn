@@ -10,7 +10,7 @@ import Mentoria from './pages/Mentoria';
 import Sobre from './pages/Sobre';
 
 import { useState } from "react";
-import { Sidebar } from './components/Sidebar'; // componente com NavigationMenu
+import { Sidebar } from './components/Sidebar';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
