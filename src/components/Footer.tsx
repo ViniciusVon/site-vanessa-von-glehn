@@ -15,7 +15,7 @@ export default function Footer() {
           <h4 className="text-base font-semibold mb-2">Contato</h4>
           <a
             href="mailto:vanessarquiteta@gmail.com"
-            className="flex items-center gap-2 hover:underline text-muted-foreground"
+            className="flex justify-center items-center gap-2 hover:underline text-muted-foreground"
           >
             <Mail className="w-4 h-4" /> vanessa.neuroarquiteta@gmail.com
           </a>

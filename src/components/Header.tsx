@@ -13,9 +13,10 @@ export default function Header() {
         absolute top-6 left-1/2 transform -translate-x-1/2
         z-50 flex items-center justify-between
         px-8 py-4
-        bg-white/10 backdrop-blur-md
+        bg-white/30 backdrop-blur-md
         border border-[var(--header)] rounded-xl
         shadow-lg
+        font-bold
       "
     >
       <NavigationMenu>
