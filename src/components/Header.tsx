@@ -53,6 +53,14 @@ export default function Header() {
               Mentoria
             </NavigationMenuLink>
           </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink
+              href="/colaboracoes"
+              className="px-4 py-2 hover:underline text-[var(--header)]"
+            >
+              Colaborações
+            </NavigationMenuLink>
+          </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
 

@@ -1,26 +1,20 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from 'react';
+import { Toaster, toast } from 'sonner';
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-} from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { CheckCircle, Users, Star, Clock } from 'lucide-react';
-import { toast, Toaster } from 'sonner';
+import { HeroSection } from '@/components/mentoria/HeroSection';
+import { FeaturesSection } from '@/components/mentoria/FeaturesSection';
+import { TestimonialsSection } from '@/components/mentoria/TestimonialsSection';
+import { PricingSection } from '@/components/mentoria/PricingSection';
+import { FAQSection } from '@/components/mentoria/FAQSection';
 
 export default function Mentoria() {
-  const features = [
-    { icon: CheckCircle, label: "Acompanhamento personalizado" },
-    { icon: Users, label: "Networking e comunidade exclusiva" },
-    { icon: Star, label: "Feedback contínuo e avaliação" },
-    { icon: Clock, label: "Sessões ao vivo e gravadas" },
-    { icon: CheckCircle, label: "Planos de ação práticos" },
-  ];
+  const [countdown, setCountdown] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+  const targetRef = useRef<Date | null>(null);
 
   const testimonials = [
     {
@@ -36,16 +30,14 @@ export default function Mentoria() {
   const faq = [
     {
       question: 'Como funcionam as sessões ao vivo?',
-      answer: 'As aulas são transmitidas ao vivo e ficam gravadas para revisão ilimitada.',
+      answer:
+        'As aulas são transmitidas ao vivo e ficam gravadas para revisão ilimitada.',
     },
     {
       question: 'Qual o suporte entre as sessões?',
       answer: 'Você tem acesso a um grupo exclusivo e suporte por e-mail.',
     },
   ];
-
-  const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const targetRef = useRef<Date | null>(null);
 
   useEffect(() => {
     if (!targetRef.current) {
@@ -57,12 +49,7 @@ export default function Mentoria() {
     const interval = setInterval(() => {
       const now = new Date();
       const diff = targetRef.current!.getTime() - now.getTime();
-
-      if (diff < 0) {
-        clearInterval(interval);
-        setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        return;
-      }
+      if (diff < 0) return clearInterval(interval);
 
       setCountdown({
         days: Math.floor(diff / (1000 * 60 * 60 * 24)),
@@ -75,14 +62,10 @@ export default function Mentoria() {
     return () => clearInterval(interval);
   }, []);
 
-  async function handleBuy() {
+  function handleBuy() {
     try {
-      //const res = await fetch('/api/mercadopago', { method: 'POST' });
-      //const { init_point } = await res.json();
-      //window.location.href = init_point;
       window.location.href = 'https://mpago.la/2iSQEfH';
-    } catch (error) {
-      console.error(error);
+    } catch {
       toast.error('Erro ao iniciar pagamento. Tente novamente.');
     }
   }
@@ -96,110 +79,40 @@ export default function Mentoria() {
         </Button>
       </div>
 
-      <main className="max-w-5xl mx-auto p-8 space-y-16">
-        {/* Hero */}
-        <section className="text-center space-y-4">
-          <h1 className="text-6xl font-extrabold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
-            Mentoria Premium com Vanessa von Glehn
-          </h1>
-          <Card className="inline-block mt-4">
-            <CardContent>
-              <CardDescription>Transforme sua carreira em 90 dias com plano de ação estratégico.</CardDescription>
-            </CardContent>
-          </Card>
-        </section>
+      {/* Container full width com fundo cinza escuro para Hero */}
+      <div className="w-full bg-gray-900">
+        <main className="max-w-5xl mx-auto p-8 space-y-16">
+          <HeroSection />
+        </main>
+      </div>
 
-        {/* Features & Countdown */}
-        <section className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-bold mb-6">O que você vai conquistar</h2>
-            <ul className="space-y-4">
-              {features.map(({ icon: Icon, label }) => (
-                <li key={label} className="flex items-center gap-3 text-lg">
-                  <Icon className="w-6 h-6 text-green-500" />
-                  {label}
-                  <Badge variant="secondary" className="ml-auto">Top</Badge>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <Card>
-            <CardHeader className="text-center">
-              <CardTitle>Vagas restantes</CardTitle>
-              <CardDescription>Oferta expira em:</CardDescription>
-            </CardHeader>
-            <CardContent className="flex justify-center gap-8 font-mono text-2xl">
-              <div>
-                <div className="text-5xl">{countdown.days}</div>
-                dias
-              </div>
-              <div>
-                <div className="text-5xl">{countdown.hours}</div>
-                h
-              </div>
-              <div>
-                <div className="text-5xl">{countdown.minutes}</div>
-                m
-              </div>
-              <div>
-                <div className="text-5xl">{countdown.seconds}</div>
-                s
-              </div>
-            </CardContent>
-          </Card>
-        </section>
+      {/* Fundo dourado para FeaturesSection */}
+      <div className="w-full bg-yellow-500">
+        <main className="max-w-5xl mx-auto p-8 space-y-16">
+          <FeaturesSection countdown={countdown} />
+        </main>
+      </div>
 
-        {/* Testimonials */}
-        <section>
-          <h2 className="text-3xl font-bold text-center mb-8">Depoimentos</h2>
-          <Tabs defaultValue={testimonials[0].author.toLowerCase()}>
-            <TabsList className="justify-center">
-              {testimonials.map((t) => (
-                <TabsTrigger key={t.author} value={t.author.toLowerCase()}>
-                  {t.author}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-            {testimonials.map((t) => (
-              <TabsContent key={t.author} value={t.author.toLowerCase()}>
-                <Card>
-                  <CardContent>
-                    <p className="italic mb-4">“{t.text}”</p>
-                    <CardDescription className="text-right">— {t.author}</CardDescription>
-                  </CardContent>
-                </Card>
-              </TabsContent>
-            ))}
-          </Tabs>
-        </section>
+      {/* Fundo cinza escuro para Testimonials */}
+      <div className="w-full bg-gray-900">
+        <main className="max-w-5xl mx-auto p-8 space-y-16">
+          <TestimonialsSection testimonials={testimonials} />
+        </main>
+      </div>
 
-        {/* Pricing & CTA */}
-        <Card className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-          <CardContent className="text-center py-12">
-            <CardHeader>
-              <CardTitle className="text-4xl font-bold mb-2">Invista em você</CardTitle>
-              <CardDescription className="text-xl">Parcelamento em até 5x sem juros</CardDescription>
-            </CardHeader>
-            <p className="text-2xl mb-6">R$ 499,00 à vista ou 5x de R$ 105,00</p>
-            <Button size="lg" onClick={handleBuy} className="bg-white text-blue-600 hover:bg-gray-100">
-              Quero Assinar Agora
-            </Button>
-          </CardContent>
-        </Card>
+      {/* Fundo dourado para Pricing */}
+      <div className="w-full bg-yellow-500">
+        <main className="max-w-5xl mx-auto p-8 space-y-16">
+          <PricingSection onBuy={handleBuy} />
+        </main>
+      </div>
 
-        {/* FAQ */}
-        <section className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-8">Perguntas Frequentes</h2>
-          <Accordion type="multiple" className="space-y-4">
-            {faq.map((item) => (
-              <AccordionItem key={item.question} value={item.question}>
-                <AccordionTrigger>{item.question}</AccordionTrigger>
-                <AccordionContent>{item.answer}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </section>
-      </main>
+      {/* Fundo cinza escuro para FAQ */}
+      <div className="w-full bg-gray-900">
+        <main className="max-w-5xl mx-auto p-8 space-y-16">
+          <FAQSection faq={faq} />
+        </main>
+      </div>
     </>
   );
 }
