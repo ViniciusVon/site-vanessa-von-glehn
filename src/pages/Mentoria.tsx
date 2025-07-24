@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -45,21 +45,33 @@ export default function Mentoria() {
   ];
 
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const targetRef = useRef<Date | null>(null);
 
   useEffect(() => {
-    const target = new Date();
-    target.setDate(target.getDate() + 5);
+    if (!targetRef.current) {
+      const target = new Date();
+      target.setDate(target.getDate() + 5);
+      targetRef.current = target;
+    }
+
     const interval = setInterval(() => {
       const now = new Date();
-      const diff = target.getTime() - now.getTime();
-      if (diff < 0) return clearInterval(interval);
+      const diff = targetRef.current!.getTime() - now.getTime();
+
+      if (diff < 0) {
+        clearInterval(interval);
+        setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+
       setCountdown({
         days: Math.floor(diff / (1000 * 60 * 60 * 24)),
         hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
         minutes: Math.floor((diff / (1000 * 60)) % 60),
-        seconds: Math.floor((diff / 1000) % 60)
+        seconds: Math.floor((diff / 1000) % 60),
       });
     }, 1000);
+
     return () => clearInterval(interval);
   }, []);
 
@@ -140,7 +152,7 @@ export default function Mentoria() {
         {/* Testimonials */}
         <section>
           <h2 className="text-3xl font-bold text-center mb-8">Depoimentos</h2>
-          <Tabs defaultValue="alice">
+          <Tabs defaultValue={testimonials[0].author.toLowerCase()}>
             <TabsList className="justify-center">
               {testimonials.map((t) => (
                 <TabsTrigger key={t.author} value={t.author.toLowerCase()}>
